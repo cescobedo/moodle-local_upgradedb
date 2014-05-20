@@ -25,7 +25,7 @@ git clone git@github.com:cescobedo/moodle-local_upgradedb.git local/upgradedb
 Download way
 - Download the zip from <https://github.com/cescobedo/moodle-local_upgradedb/archive/master.zip>
 - Unzip it into  local/ folder in your Moodle,
-- Rename the new folder "moodle-local_upgradedb" to "upgradedb"
+- Rename the new folder "moodle-local_upgradedb-master" to "upgradedb"
 - Enjoy!!!
 
 FUTURE SCOPE:
