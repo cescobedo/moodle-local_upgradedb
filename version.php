@@ -20,3 +20,4 @@ $plugin->version   = 2013021400;
 $plugin->requires  = 2013111800;
 $plugin->component = 'local_upgradedb';
 $plugin->maturity = MATURITY_STABLE;
+$plugin->release = '1.0';
