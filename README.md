@@ -29,7 +29,6 @@ Download way
 - Enjoy!!!
 
 FUTURE SCOPE:
-- FILEBOX to drag a file.
 - Empty tables.
 - Check tables in DB to allow alter columns.
 
