@@ -35,3 +35,10 @@ $string['action']       = 'Action';
 $string['dmladd']       = 'Table was added successfully: ';
 $string['dmldrop']      = 'Table was dropped successfully: ';
 $string['submit']       = 'Submit';
+$string['analyze']      = 'Analyze and refrex indexex table only for MySQL DB';
+$string['dmlanalyze']   = 'Table was analyzed and refresh indexex successfully: ';
+$string['showkey']      = 'Show keys';
+$string['showindex']    = 'Show indexes';
+$string['xmlview']   	= 'View XMLDB';
+$string['xmlviewout']   = 'Show XMLDB Tables definition using Moodle xmldbtool: ';
+

@@ -38,6 +38,9 @@ class upgradedb_form extends moodleform {
         $mform->setDefault('filexml', '');
         $mform->setType('filexml', PARAM_RAW);
 
+        $mform->addElement('checkbox', 'showkey', '', get_string('showkey', 'local_upgradedb'));
+        $mform->addElement('checkbox', 'showindex', '', get_string('showindex', 'local_upgradedb'));
+
         // Action Butttons.
         $this->add_action_buttons(true,  get_string('submit', 'local_upgradedb'));
     }

@@ -30,9 +30,11 @@ require_once('upgradedb_form.php');
 global $CFG, $DB;
 
 
-$filexml  = optional_param('filexml', null, PARAM_RAW);
-$action   = optional_param('action', '', PARAM_RAW);
-$tabledb  = optional_param('tabledb', null, PARAM_RAW);
+$filexml   = optional_param('filexml', null, PARAM_RAW);
+$action    = optional_param('action', '', PARAM_RAW);
+$tabledb   = optional_param('tabledb', null, PARAM_RAW);
+$showkey   = optional_param('showkey', null, PARAM_RAW);
+$showindex = optional_param('showindex', null, PARAM_RAW);
 
 require_login();
 $context = context_system::instance();
@@ -52,6 +54,17 @@ $editlinkbutton = html_writer::empty_tag('img', array(
 $dellinkbutton = html_writer::empty_tag('img', array(
     'src' => $OUTPUT->pix_url('t/delete'),
     'alt' => get_string('delete'), 'class' => 'iconsmall'));
+$analyzebutton = html_writer::empty_tag('img', array(
+    'src' => $OUTPUT->pix_url('i/course'),
+    'alt' => get_string('analyze', 'local_upgradedb'), 'class' => 'iconsmall'));
+$xmlbutton = html_writer::empty_tag('img', array(
+    'src' => $OUTPUT->pix_url('i/restore'),
+    'alt' => get_string('xmlview', 'local_upgradedb'), 'class' => 'iconsmall'));
+
+$ismysql = 0;
+if ($CFG->dbtype == 'mysqli') {
+    $ismysql = 1;
+}
 
 $messagedml = '';
 if (isset($tabledb)) {
@@ -71,10 +84,21 @@ if (isset($tabledb)) {
             $messagedml = get_string('dmldrop', 'local_upgradedb').$tabledb;
         }
         flush();
+    } else if ($action == 'analyze') {
+        $dbman = $DB->get_manager();
+        $engine = strtolower($DB->get_dbengine());
+        $table = new xmldb_table($tabledb);
+        if ($dbman->table_exists($table) && $ismysql) {
+            $dml = "ALTER TABLE ".$CFG->prefix.$tabledb." ENGINE='$engine'";
+            $DB->change_database_structure($dml);
+            $dml = "ANALYZE TABLE $tabledb";
+            $DB->execute($dml);
+            
+            $messagedml = get_string('dmlanalyze', 'local_upgradedb').$tabledb;
+        }
+        flush();
     }
 }
-
-
 
 if ($mform->is_cancelled()) {
     redirect($CFG->wwwroot);
@@ -91,7 +115,7 @@ $PAGE->set_heading($strheading);
 echo $OUTPUT->header();
 echo $OUTPUT->heading($strheading);
 
-if (isset($filexml)) {
+if (!empty($filexml)) {
     $dbman = $DB->get_manager();
     $file = $CFG->dirroot .'/'. $filexml;
     $xmldbfile = new xmldb_file($file);
@@ -104,20 +128,43 @@ if (isset($filexml)) {
             foreach ($tables as $table) {
                 $tablename = $table->getName();
                 if ($dbman->table_exists($table)) {
+                    $buttona = '';
+                    if ($ismysql) {
+                        $analyze = new moodle_url('/local/upgradedb/index.php', array('tabledb' => $tablename,
+                                    'action' => 'analyze', 'filexml' => $filexml));
+                        $buttona = html_writer::link($analyze, $analyzebutton, array('title' => get_string('analyze', 'local_upgradedb')));     
+                    }
+                    
                     if (!$DB->record_exists($tablename, array())) {
                         $dellink = new moodle_url('/local/upgradedb/index.php', array('tabledb' => $tablename,
                                 'action' => 'del', 'filexml' => $filexml));
                         $button = html_writer::link($dellink, $dellinkbutton, array('title' => get_string('delete')));
-                        $datatable[] = array($tablename, $button);
+                        $datatable[] = array($tablename, $button, $buttona);
+                 
                     } else {
-                        $datatable[] = array($tablename, get_string('tableok', 'local_upgradedb'));
+                        $datatable[] = array($tablename, get_string('tableok', 'local_upgradedb'), $buttona);
                     }
                 } else {
                     $editlink = new moodle_url('/local/upgradedb/index.php', array('tabledb' => $tablename,
                                 'action' => 'add', 'filexml' => $filexml));
                     $button = html_writer::link($editlink, $editlinkbutton, array('title' => get_string('add')));
-                    $datatable[] = array($tablename, $button);
+                    $datatable[] = array($tablename, $button, '&nbsp;');
                 }
+
+                if ($showkey) {
+                    $keys = $table->getKeys();
+                    foreach ($keys as $key) {
+                        $datatable[] = array('&nbsp;&nbsp;&nbsp;Key: '.$key->getName(), '', '');
+                    }
+                }
+                if ($showindex) {
+                    $indexes = $table->getIndexes();
+                    foreach ($indexes as $index) {
+                        $datatable[] = array('&nbsp;&nbsp;&nbsp;Index: '.$index->getName(), '', '');
+                    }
+                }
+                
+
             }
         } else {
             echo $OUTPUT->notification(get_string('errorxml', 'local_upgradedb'), 'notifyproblem');
@@ -142,4 +189,14 @@ if (isset($datatable)) {
     $table->data  = $datatable;
     echo html_writer::table($table);
 }
+
+if (!empty($filexml) && ($xmldbfile->fileExists()) ) {
+    $xmldbview = new moodle_url('/admin/tool/xmldb/index.php', array('action' => 'view_xml', 'file' =>'/'.$filexml));
+    $xmlview = html_writer::link($xmldbview, $xmlbutton, array('title' => get_string('xmlview', 'local_upgradedb'), 'target'=>'blank'));
+    $outputhtml = html_writer::start_tag('div', array('class' => 'form-buttons'));
+    $outputhtml .= get_string('xmlviewout', 'local_upgradedb').$xmlview;
+    $outputhtml .= html_writer::end_tag('div');  
+    echo $outputhtml;
+}
+
 echo $OUTPUT->footer();

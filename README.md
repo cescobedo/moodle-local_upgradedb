@@ -10,9 +10,16 @@ upgrade tables whenever you want.
 You cannot drop tables was with data.
 It was created thinking in developers to plugins.
 
+New fresh features
+------------------
+- Analyze and Refresh Indexes in MySQL Tables.
+- Show Keys and Indexes.
+- Show XMLFile using xmldbtools.
+- Support 2.9 and 2.8.
+
 Version  
 -------
-Moodle 2.7+, 2.6+ and 2.5+
+Moodle 2.9, 2.8, 2.6, 2.7+, 2.6+ and 2.5+
 
 TO INSTALL:
 
@@ -28,9 +35,6 @@ Download way
 - Rename the new folder "moodle-local_upgradedb-master" to "upgradedb"
 - Enjoy!!!
 
-FUTURE SCOPE:
-- Empty tables.
-- Check tables in DB to allow alter columns.
 
 Author
 ------
