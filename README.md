@@ -15,7 +15,6 @@ New fresh features
 - Analyze and Refresh Indexes in MySQL Tables.
 - Show Keys and Indexes.
 - Show XMLFile using xmldbtools.
-- Support 2.9 and 2.8.
 
 Version  
 -------
