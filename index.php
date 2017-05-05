@@ -49,16 +49,16 @@ $PAGE->set_pagelayout('incourse');
 
 $mform = new upgradedb_form(null, array('filexml' => $filexml, 'action' => $action));
 $editlinkbutton = html_writer::empty_tag('img', array(
-    'src' => $OUTPUT->pix_url('t/add'),
+    'src' => $OUTPUT->image_url('t/add'),
     'alt' => get_string('add'), 'class' => 'iconsmall'));
 $dellinkbutton = html_writer::empty_tag('img', array(
-    'src' => $OUTPUT->pix_url('t/delete'),
+    'src' => $OUTPUT->image_url('t/delete'),
     'alt' => get_string('delete'), 'class' => 'iconsmall'));
 $analyzebutton = html_writer::empty_tag('img', array(
-    'src' => $OUTPUT->pix_url('i/course'),
+    'src' => $OUTPUT->image_url('i/course'),
     'alt' => get_string('analyze', 'local_upgradedb'), 'class' => 'iconsmall'));
 $xmlbutton = html_writer::empty_tag('img', array(
-    'src' => $OUTPUT->pix_url('i/restore'),
+    'src' => $OUTPUT->image_url('i/restore'),
     'alt' => get_string('xmlview', 'local_upgradedb'), 'class' => 'iconsmall'));
 
 $ismysql = 0;

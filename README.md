@@ -18,7 +18,7 @@ New fresh features
 
 Version  
 -------
-Moodle 3.2+, 3.1+, 3.0+, 2.9, 2.8, 2.6, 2.7+, 2.6+ and 2.5+
+Moodle 3.3+, 3.2+, 3.1+, 3.0+, 2.9, 2.8, 2.6, 2.7+, 2.6+ and 2.5+
 
 TO INSTALL:
 
