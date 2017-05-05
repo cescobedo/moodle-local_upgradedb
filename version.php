@@ -16,8 +16,8 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2015100500;
+$plugin->version   = 2017050500;
 $plugin->requires  = 2013040500;
 $plugin->component = 'local_upgradedb';
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = '2.0';
+$plugin->release = '2.1';
