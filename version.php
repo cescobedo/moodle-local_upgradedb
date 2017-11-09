@@ -14,6 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * UpgradeDB
+ *
+ * @package    local_upgradedb
+ * @author     Carlos Escobedo <http://www.twitter.com/carlosagile>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2017 Carlos Escobedo <http://www.twitter.com/carlosagile>)
+ */
+
 defined('MOODLE_INTERNAL') || die;
 
 $plugin->version   = 2017050500;

@@ -5,7 +5,7 @@ Information
 -----------
 
 This plugin allow install new tables into DB using xmldb files under developer control.
-You can choose which install.xml table want to install in place to install all tables and 
+You can choose which install.xml table want to install in place to install all tables and
 upgrade tables whenever you want.
 You cannot drop tables was with data.
 It was created thinking in developers to plugins.
@@ -18,7 +18,7 @@ New fresh features
 
 Version  
 -------
-Moodle 3.3+, 3.2+, 3.1+, 3.0+, 2.9, 2.8, 2.6, 2.7+, 2.6+ and 2.5+
+Moodle 3.4+, 3.3+, 3.2+, 3.1+, 3.0+, 2.9, 2.8, 2.6, 2.7+, 2.6+ and 2.5+
 
 TO INSTALL:
 
@@ -40,5 +40,3 @@ Author
 Carlos Escobedo
 - <http://www.twitter.com/carlosagile>
 - <https://coderwall.com/carlosagile>
-
-

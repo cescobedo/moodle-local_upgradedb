@@ -17,10 +17,10 @@
 /**
  * UpgradeDB
  *
- * @package    local
- * @subpackage upgradedb
+ * @package    local_upgradedb
  * @author     Carlos Escobedo <http://www.twitter.com/carlosagile>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2017 Carlos Escobedo <http://www.twitter.com/carlosagile>)
  */
 
 // Plugin Name.
@@ -39,6 +39,5 @@ $string['analyze']      = 'Analyze and refrex indexex table only for MySQL DB';
 $string['dmlanalyze']   = 'Table was analyzed and refresh indexex successfully: ';
 $string['showkey']      = 'Show keys';
 $string['showindex']    = 'Show indexes';
-$string['xmlview']   	= 'View XMLDB';
+$string['xmlview']      = 'View XMLDB';
 $string['xmlviewout']   = 'Show XMLDB Tables definition using Moodle xmldbtool: ';
-

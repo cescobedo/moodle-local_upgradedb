@@ -17,10 +17,10 @@
 /**
  * UpgradeDB - Allo developers add and drop tables over install.xml
  *
- * @package    local
- * @subpackage upgradedb
+ * @package    local_upgradedb
  * @author     Carlos Escobedo <http://www.twitter.com/carlosagile>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2017 Carlos Escobedo <http://www.twitter.com/carlosagile>)
  */
 
 
@@ -93,7 +93,7 @@ if (isset($tabledb)) {
             $DB->change_database_structure($dml);
             $dml = "ANALYZE TABLE $tabledb";
             $DB->execute($dml);
-            
+
             $messagedml = get_string('dmlanalyze', 'local_upgradedb').$tabledb;
         }
         flush();
@@ -132,15 +132,16 @@ if (!empty($filexml)) {
                     if ($ismysql) {
                         $analyze = new moodle_url('/local/upgradedb/index.php', array('tabledb' => $tablename,
                                     'action' => 'analyze', 'filexml' => $filexml));
-                        $buttona = html_writer::link($analyze, $analyzebutton, array('title' => get_string('analyze', 'local_upgradedb')));     
+                        $buttona = html_writer::link($analyze, $analyzebutton,
+                                    array('title' => get_string('analyze', 'local_upgradedb')));
                     }
-                    
+
                     if (!$DB->record_exists($tablename, array())) {
                         $dellink = new moodle_url('/local/upgradedb/index.php', array('tabledb' => $tablename,
                                 'action' => 'del', 'filexml' => $filexml));
                         $button = html_writer::link($dellink, $dellinkbutton, array('title' => get_string('delete')));
                         $datatable[] = array($tablename, $button, $buttona);
-                 
+
                     } else {
                         $datatable[] = array($tablename, get_string('tableok', 'local_upgradedb'), $buttona);
                     }
@@ -163,7 +164,7 @@ if (!empty($filexml)) {
                         $datatable[] = array('&nbsp;&nbsp;&nbsp;Index: '.$index->getName(), '', '');
                     }
                 }
-                
+
 
             }
         } else {
@@ -191,11 +192,13 @@ if (isset($datatable)) {
 }
 
 if (!empty($filexml) && ($xmldbfile->fileExists()) ) {
-    $xmldbview = new moodle_url('/admin/tool/xmldb/index.php', array('action' => 'view_xml', 'file' =>'/'.$filexml));
-    $xmlview = html_writer::link($xmldbview, $xmlbutton, array('title' => get_string('xmlview', 'local_upgradedb'), 'target'=>'blank'));
+    $xmldbview = new moodle_url('/admin/tool/xmldb/index.php',
+                array('action' => 'view_xml', 'file' => '/'.$filexml));
+    $xmlview = html_writer::link($xmldbview, $xmlbutton,
+                array('title' => get_string('xmlview', 'local_upgradedb'), 'target' => 'blank'));
     $outputhtml = html_writer::start_tag('div', array('class' => 'form-buttons'));
     $outputhtml .= get_string('xmlviewout', 'local_upgradedb').$xmlview;
-    $outputhtml .= html_writer::end_tag('div');  
+    $outputhtml .= html_writer::end_tag('div');
     echo $outputhtml;
 }
 

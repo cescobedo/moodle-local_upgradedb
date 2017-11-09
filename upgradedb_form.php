@@ -17,17 +17,27 @@
 /**
  * UpgradeDB
  *
- * @package    local
- * @subpackage upgradedb
+ * @package    local_upgradedb
  * @author     Carlos Escobedo <http://www.twitter.com/carlosagile>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2017 Carlos Escobedo <http://www.twitter.com/carlosagile>)
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir.'/formslib.php');
 
+/**
+ * UpgradeDB form
+ *
+ * @package    local_upgradedb
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2017 Carlos Escobedo <http://www.twitter.com/carlosagile>)
+ */
 class upgradedb_form extends moodleform {
+    /**
+     * Define the form - called by parent constructor.
+     */
     public function definition() {
         global $CFG, $USER;
 
@@ -45,4 +55,3 @@ class upgradedb_form extends moodleform {
         $this->add_action_buttons(true,  get_string('submit', 'local_upgradedb'));
     }
 }
-
