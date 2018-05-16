@@ -16,9 +16,9 @@ New fresh features
 - Show Keys and Indexes.
 - Show XMLFile using xmldbtools.
 
-Version  
+Version
 -------
-Moodle 3.4+, 3.3+, 3.2+, 3.1+, 3.0+, 2.9, 2.8, 2.6, 2.7+, 2.6+ and 2.5+
+Moodle 3.5+, 3.4+, 3.3+, 3.2+, 3.1+, 3.0+, 2.9, 2.8, 2.6, 2.7+, 2.6+ and 2.5+
 
 TO INSTALL:
 
@@ -34,6 +34,8 @@ Download way
 - Rename the new folder "moodle-local_upgradedb-master" to "upgradedb"
 - Enjoy!!!
 
+NEW FEATURE
+- Privacy Subsystem implementation for auth_dev. <https://docs.moodle.org/dev/Privacy_API>
 
 Author
 ------

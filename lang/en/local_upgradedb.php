@@ -41,3 +41,4 @@ $string['showkey']      = 'Show keys';
 $string['showindex']    = 'Show indexes';
 $string['xmlview']      = 'View XMLDB';
 $string['xmlviewout']   = 'Show XMLDB Tables definition using Moodle xmldbtool: ';
+$string['privacy:metadata'] = 'The UpgradeDB plugin does not store any personal data.';

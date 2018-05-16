@@ -13,20 +13,33 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
 /**
- * UpgradeDB
+ * Privacy Subsystem implementation for local_upgradedb.
  *
  * @package    local_upgradedb
  * @author     Carlos Escobedo <http://www.twitter.com/carlosagile>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @copyright  2017 Carlos Escobedo <http://www.twitter.com/carlosagile>)
+ * @copyright  2018 Carlos Escobedo <http://www.twitter.com/carlosagile>)
  */
+namespace local_upgradedb\privacy;
+defined('MOODLE_INTERNAL') || die();
+/**
+ * Privacy Subsystem for local_upgradedb implementing null_provider.
+ *
+ * @copyright  2018 Carlos Escobedo <carlos@moodle.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
+    // This trait must be included.
+    use \core_privacy\local\legacy_polyfill;
 
-defined('MOODLE_INTERNAL') || die;
-
-$plugin->version   = 2018051600;
-$plugin->requires  = 2013040500;
-$plugin->component = 'local_upgradedb';
-$plugin->maturity = MATURITY_STABLE;
-$plugin->release = '2.2';
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function _get_reason() {
+        return 'privacy:metadata';
+    }
+}
