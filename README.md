@@ -10,15 +10,15 @@ upgrade tables whenever you want.
 You cannot drop tables was with data.
 It was created thinking in developers to plugins.
 
-New fresh features
+Features
 ------------------
-- Analyze and Refresh Indexes in MySQL Tables.
+- Analyze and Refresh Indexes in MySQL and MariaDB Tables.
 - Show Keys and Indexes.
 - Show XMLFile using xmldbtools.
 
 Version
 -------
-Moodle 3.5+, 3.4+, 3.3+, 3.2+, 3.1+, 3.0+, 2.9, 2.8, 2.6, 2.7+, 2.6+ and 2.5+
+Moodle 3.11+, 3.10+, 3.9+, 3.8, 3.7+, 3.6+, 3.5+, 3.4+, 3.3+, 3.2+, 3.1+, 3.0+, 2.9, 2.8, 2.6, 2.7+, 2.6+ and 2.5+
 
 TO INSTALL:
 
