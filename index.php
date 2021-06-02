@@ -62,8 +62,8 @@ $xmlbutton = html_writer::empty_tag('img', array(
     'alt' => get_string('xmlview', 'local_upgradedb'), 'class' => 'iconsmall'));
 
 $ismysql = 0;
-$compatdb = array("mysqli","mariadb");
-if (in_array($CFG->dbtype,$compatdb)) {
+$compatdb = array('mysqli', 'mariadb');
+if (in_array($CFG->dbtype, $compatdb)) {
     $ismysql = 1;
 }
 
